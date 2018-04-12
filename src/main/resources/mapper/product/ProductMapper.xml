@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.product.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.product.ProductDO">
+    <id column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_sn" jdbcType="VARCHAR" property="productSn" />
+    <result column="product_quantity" jdbcType="INTEGER" property="productQuantity" />
+    <result column="product_area" jdbcType="VARCHAR" property="productArea" />
+    <result column="product_message" jdbcType="VARCHAR" property="productMessage" />
+    <result column="product_specification" jdbcType="VARCHAR" property="productSpecification" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, product_sn, product_quantity, product_area, product_message, product_specification
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.product.ProductDO">
+    insert into product (product_id, product_sn, product_quantity, 
+      product_area, product_message, product_specification
+      )
+    values (#{productId,jdbcType=BIGINT}, #{productSn,jdbcType=VARCHAR}, #{productQuantity,jdbcType=INTEGER}, 
+      #{productArea,jdbcType=VARCHAR}, #{productMessage,jdbcType=VARCHAR}, #{productSpecification,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.product.ProductDO">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productSn != null">
+        product_sn,
+      </if>
+      <if test="productQuantity != null">
+        product_quantity,
+      </if>
+      <if test="productArea != null">
+        product_area,
+      </if>
+      <if test="productMessage != null">
+        product_message,
+      </if>
+      <if test="productSpecification != null">
+        product_specification,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productSn != null">
+        #{productSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null">
+        #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="productArea != null">
+        #{productArea,jdbcType=VARCHAR},
+      </if>
+      <if test="productMessage != null">
+        #{productMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="productSpecification != null">
+        #{productSpecification,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.product.ProductDO">
+    update product
+    <set>
+      <if test="productSn != null">
+        product_sn = #{productSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null">
+        product_quantity = #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="productArea != null">
+        product_area = #{productArea,jdbcType=VARCHAR},
+      </if>
+      <if test="productMessage != null">
+        product_message = #{productMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="productSpecification != null">
+        product_specification = #{productSpecification,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.product.ProductDO">
+    update product
+    set product_sn = #{productSn,jdbcType=VARCHAR},
+      product_quantity = #{productQuantity,jdbcType=INTEGER},
+      product_area = #{productArea,jdbcType=VARCHAR},
+      product_message = #{productMessage,jdbcType=VARCHAR},
+      product_specification = #{productSpecification,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+</mapper>

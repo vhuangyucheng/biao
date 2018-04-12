@@ -22,5 +22,13 @@ public interface MemberService {
      * @Desription  : 检查账号密码
      * @return      :
      */
-    public SuccessResponse<Object> checkMember(DataRequest<MemberDO> MemberDO);
+    public SuccessResponse<Object> checkMember(DataRequest<MemberDO> dataRequest);
+
+    /**
+     * @author      : kooing
+     * @Date        : 2018/4/10 21:41
+     * @Desription  : 获得用户信息
+     * @return      :
+     */
+    public SuccessResponse<MemberDO> getMember(DataRequest<MemberDO> dataRequest);
 }

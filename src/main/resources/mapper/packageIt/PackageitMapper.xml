@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.packageIt.PackageitMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.packageIt.PackageitDO">
+    <id column="package_id" jdbcType="BIGINT" property="packageId" />
+    <result column="product_record_id" jdbcType="BIGINT" property="productRecordId" />
+    <result column="package_status" jdbcType="INTEGER" property="packageStatus" />
+    <result column="package_quantity" jdbcType="INTEGER" property="packageQuantity" />
+    <result column="package_ready" jdbcType="INTEGER" property="packageReady" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    package_id, product_record_id, package_status, package_quantity, package_ready
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from packageit
+    where package_id = #{packageId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from packageit
+    where package_id = #{packageId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.packageIt.PackageitDO">
+    insert into packageit (package_id, product_record_id, package_status, 
+      package_quantity, package_ready)
+    values (#{packageId,jdbcType=BIGINT}, #{productRecordId,jdbcType=BIGINT}, #{packageStatus,jdbcType=INTEGER}, 
+      #{packageQuantity,jdbcType=INTEGER}, #{packageReady,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.packageIt.PackageitDO">
+    insert into packageit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="packageId != null">
+        package_id,
+      </if>
+      <if test="productRecordId != null">
+        product_record_id,
+      </if>
+      <if test="packageStatus != null">
+        package_status,
+      </if>
+      <if test="packageQuantity != null">
+        package_quantity,
+      </if>
+      <if test="packageReady != null">
+        package_ready,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="packageId != null">
+        #{packageId,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordId != null">
+        #{productRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="packageStatus != null">
+        #{packageStatus,jdbcType=INTEGER},
+      </if>
+      <if test="packageQuantity != null">
+        #{packageQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="packageReady != null">
+        #{packageReady,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.packageIt.PackageitDO">
+    update packageit
+    <set>
+      <if test="productRecordId != null">
+        product_record_id = #{productRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="packageStatus != null">
+        package_status = #{packageStatus,jdbcType=INTEGER},
+      </if>
+      <if test="packageQuantity != null">
+        package_quantity = #{packageQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="packageReady != null">
+        package_ready = #{packageReady,jdbcType=INTEGER},
+      </if>
+    </set>
+    where package_id = #{packageId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.packageIt.PackageitDO">
+    update packageit
+    set product_record_id = #{productRecordId,jdbcType=BIGINT},
+      package_status = #{packageStatus,jdbcType=INTEGER},
+      package_quantity = #{packageQuantity,jdbcType=INTEGER},
+      package_ready = #{packageReady,jdbcType=INTEGER}
+    where package_id = #{packageId,jdbcType=BIGINT}
+  </update>
+</mapper>

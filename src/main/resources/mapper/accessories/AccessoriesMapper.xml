@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.accessories.AccessoriesMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.accessories.AccessoriesDO">
+    <id column="accessories_id" jdbcType="BIGINT" property="accessoriesId" />
+    <result column="accessories_specification" jdbcType="VARCHAR" property="accessoriesSpecification" />
+    <result column="accessories_quantity_pcs" jdbcType="INTEGER" property="accessoriesQuantityPcs" />
+    <result column="accessories_quantity_real" jdbcType="INTEGER" property="accessoriesQuantityReal" />
+    <result column="accessories_unit" jdbcType="VARCHAR" property="accessoriesUnit" />
+    <result column="accessories_message" jdbcType="VARCHAR" property="accessoriesMessage" />
+    <result column="accessories_location" jdbcType="VARCHAR" property="accessoriesLocation" />
+    <result column="accessories_head_trail" jdbcType="VARCHAR" property="accessoriesHeadTrail" />
+    <result column="accessories_thickness" jdbcType="VARCHAR" property="accessoriesThickness" />
+    <result column="accessories_m" jdbcType="VARCHAR" property="accessoriesM" />
+    <result column="accessories_q" jdbcType="VARCHAR" property="accessoriesQ" />
+    <result column="accessories_groove_width" jdbcType="DOUBLE" property="accessoriesGrooveWidth" />
+    <result column="accessories_price" jdbcType="DECIMAL" property="accessoriesPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    accessories_id, accessories_specification, accessories_quantity_pcs, accessories_quantity_real, 
+    accessories_unit, accessories_message, accessories_location, accessories_head_trail, 
+    accessories_thickness, accessories_m, accessories_q, accessories_groove_width, accessories_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accessories
+    where accessories_id = #{accessoriesId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accessories
+    where accessories_id = #{accessoriesId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.accessories.AccessoriesDO">
+    insert into accessories (accessories_id, accessories_specification, 
+      accessories_quantity_pcs, accessories_quantity_real, 
+      accessories_unit, accessories_message, accessories_location, 
+      accessories_head_trail, accessories_thickness, 
+      accessories_m, accessories_q, accessories_groove_width, 
+      accessories_price)
+    values (#{accessoriesId,jdbcType=BIGINT}, #{accessoriesSpecification,jdbcType=VARCHAR}, 
+      #{accessoriesQuantityPcs,jdbcType=INTEGER}, #{accessoriesQuantityReal,jdbcType=INTEGER}, 
+      #{accessoriesUnit,jdbcType=VARCHAR}, #{accessoriesMessage,jdbcType=VARCHAR}, #{accessoriesLocation,jdbcType=VARCHAR}, 
+      #{accessoriesHeadTrail,jdbcType=VARCHAR}, #{accessoriesThickness,jdbcType=VARCHAR}, 
+      #{accessoriesM,jdbcType=VARCHAR}, #{accessoriesQ,jdbcType=VARCHAR}, #{accessoriesGrooveWidth,jdbcType=DOUBLE}, 
+      #{accessoriesPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.accessories.AccessoriesDO">
+    insert into accessories
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accessoriesId != null">
+        accessories_id,
+      </if>
+      <if test="accessoriesSpecification != null">
+        accessories_specification,
+      </if>
+      <if test="accessoriesQuantityPcs != null">
+        accessories_quantity_pcs,
+      </if>
+      <if test="accessoriesQuantityReal != null">
+        accessories_quantity_real,
+      </if>
+      <if test="accessoriesUnit != null">
+        accessories_unit,
+      </if>
+      <if test="accessoriesMessage != null">
+        accessories_message,
+      </if>
+      <if test="accessoriesLocation != null">
+        accessories_location,
+      </if>
+      <if test="accessoriesHeadTrail != null">
+        accessories_head_trail,
+      </if>
+      <if test="accessoriesThickness != null">
+        accessories_thickness,
+      </if>
+      <if test="accessoriesM != null">
+        accessories_m,
+      </if>
+      <if test="accessoriesQ != null">
+        accessories_q,
+      </if>
+      <if test="accessoriesGrooveWidth != null">
+        accessories_groove_width,
+      </if>
+      <if test="accessoriesPrice != null">
+        accessories_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accessoriesId != null">
+        #{accessoriesId,jdbcType=BIGINT},
+      </if>
+      <if test="accessoriesSpecification != null">
+        #{accessoriesSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesQuantityPcs != null">
+        #{accessoriesQuantityPcs,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesQuantityReal != null">
+        #{accessoriesQuantityReal,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesUnit != null">
+        #{accessoriesUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesMessage != null">
+        #{accessoriesMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesLocation != null">
+        #{accessoriesLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesHeadTrail != null">
+        #{accessoriesHeadTrail,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesThickness != null">
+        #{accessoriesThickness,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesM != null">
+        #{accessoriesM,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesQ != null">
+        #{accessoriesQ,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesGrooveWidth != null">
+        #{accessoriesGrooveWidth,jdbcType=DOUBLE},
+      </if>
+      <if test="accessoriesPrice != null">
+        #{accessoriesPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.accessories.AccessoriesDO">
+    update accessories
+    <set>
+      <if test="accessoriesSpecification != null">
+        accessories_specification = #{accessoriesSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesQuantityPcs != null">
+        accessories_quantity_pcs = #{accessoriesQuantityPcs,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesQuantityReal != null">
+        accessories_quantity_real = #{accessoriesQuantityReal,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesUnit != null">
+        accessories_unit = #{accessoriesUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesMessage != null">
+        accessories_message = #{accessoriesMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesLocation != null">
+        accessories_location = #{accessoriesLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesHeadTrail != null">
+        accessories_head_trail = #{accessoriesHeadTrail,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesThickness != null">
+        accessories_thickness = #{accessoriesThickness,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesM != null">
+        accessories_m = #{accessoriesM,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesQ != null">
+        accessories_q = #{accessoriesQ,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesGrooveWidth != null">
+        accessories_groove_width = #{accessoriesGrooveWidth,jdbcType=DOUBLE},
+      </if>
+      <if test="accessoriesPrice != null">
+        accessories_price = #{accessoriesPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where accessories_id = #{accessoriesId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.accessories.AccessoriesDO">
+    update accessories
+    set accessories_specification = #{accessoriesSpecification,jdbcType=VARCHAR},
+      accessories_quantity_pcs = #{accessoriesQuantityPcs,jdbcType=INTEGER},
+      accessories_quantity_real = #{accessoriesQuantityReal,jdbcType=INTEGER},
+      accessories_unit = #{accessoriesUnit,jdbcType=VARCHAR},
+      accessories_message = #{accessoriesMessage,jdbcType=VARCHAR},
+      accessories_location = #{accessoriesLocation,jdbcType=VARCHAR},
+      accessories_head_trail = #{accessoriesHeadTrail,jdbcType=VARCHAR},
+      accessories_thickness = #{accessoriesThickness,jdbcType=VARCHAR},
+      accessories_m = #{accessoriesM,jdbcType=VARCHAR},
+      accessories_q = #{accessoriesQ,jdbcType=VARCHAR},
+      accessories_groove_width = #{accessoriesGrooveWidth,jdbcType=DOUBLE},
+      accessories_price = #{accessoriesPrice,jdbcType=DECIMAL}
+    where accessories_id = #{accessoriesId,jdbcType=BIGINT}
+  </update>
+</mapper>

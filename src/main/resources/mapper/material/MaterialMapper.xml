@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.material.MaterialMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.material.MaterialDO">
+    <id column="material_id" jdbcType="BIGINT" property="materialId" />
+    <result column="material_name" jdbcType="VARCHAR" property="materialName" />
+    <result column="material_code" jdbcType="VARCHAR" property="materialCode" />
+    <result column="material_count" jdbcType="VARCHAR" property="materialCount" />
+    <result column="material_message" jdbcType="VARCHAR" property="materialMessage" />
+    <result column="meterial_quantity" jdbcType="INTEGER" property="meterialQuantity" />
+    <result column="meterial_unit_weight" jdbcType="DOUBLE" property="meterialUnitWeight" />
+    <result column="meterial_location" jdbcType="VARCHAR" property="meterialLocation" />
+    <result column="meterial_price" jdbcType="DOUBLE" property="meterialPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    material_id, material_name, material_code, material_count, material_message, meterial_quantity, 
+    meterial_unit_weight, meterial_location, meterial_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from material
+    where material_id = #{materialId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from material
+    where material_id = #{materialId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.material.MaterialDO">
+    insert into material (material_id, material_name, material_code, 
+      material_count, material_message, meterial_quantity, 
+      meterial_unit_weight, meterial_location, meterial_price
+      )
+    values (#{materialId,jdbcType=BIGINT}, #{materialName,jdbcType=VARCHAR}, #{materialCode,jdbcType=VARCHAR}, 
+      #{materialCount,jdbcType=VARCHAR}, #{materialMessage,jdbcType=VARCHAR}, #{meterialQuantity,jdbcType=INTEGER}, 
+      #{meterialUnitWeight,jdbcType=DOUBLE}, #{meterialLocation,jdbcType=VARCHAR}, #{meterialPrice,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.material.MaterialDO">
+    insert into material
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="materialName != null">
+        material_name,
+      </if>
+      <if test="materialCode != null">
+        material_code,
+      </if>
+      <if test="materialCount != null">
+        material_count,
+      </if>
+      <if test="materialMessage != null">
+        material_message,
+      </if>
+      <if test="meterialQuantity != null">
+        meterial_quantity,
+      </if>
+      <if test="meterialUnitWeight != null">
+        meterial_unit_weight,
+      </if>
+      <if test="meterialLocation != null">
+        meterial_location,
+      </if>
+      <if test="meterialPrice != null">
+        meterial_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="materialId != null">
+        #{materialId,jdbcType=BIGINT},
+      </if>
+      <if test="materialName != null">
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null">
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCount != null">
+        #{materialCount,jdbcType=VARCHAR},
+      </if>
+      <if test="materialMessage != null">
+        #{materialMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="meterialQuantity != null">
+        #{meterialQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="meterialUnitWeight != null">
+        #{meterialUnitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="meterialLocation != null">
+        #{meterialLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="meterialPrice != null">
+        #{meterialPrice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.material.MaterialDO">
+    update material
+    <set>
+      <if test="materialName != null">
+        material_name = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null">
+        material_code = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCount != null">
+        material_count = #{materialCount,jdbcType=VARCHAR},
+      </if>
+      <if test="materialMessage != null">
+        material_message = #{materialMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="meterialQuantity != null">
+        meterial_quantity = #{meterialQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="meterialUnitWeight != null">
+        meterial_unit_weight = #{meterialUnitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="meterialLocation != null">
+        meterial_location = #{meterialLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="meterialPrice != null">
+        meterial_price = #{meterialPrice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where material_id = #{materialId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.material.MaterialDO">
+    update material
+    set material_name = #{materialName,jdbcType=VARCHAR},
+      material_code = #{materialCode,jdbcType=VARCHAR},
+      material_count = #{materialCount,jdbcType=VARCHAR},
+      material_message = #{materialMessage,jdbcType=VARCHAR},
+      meterial_quantity = #{meterialQuantity,jdbcType=INTEGER},
+      meterial_unit_weight = #{meterialUnitWeight,jdbcType=DOUBLE},
+      meterial_location = #{meterialLocation,jdbcType=VARCHAR},
+      meterial_price = #{meterialPrice,jdbcType=DOUBLE}
+    where material_id = #{materialId,jdbcType=BIGINT}
+  </update>
+</mapper>

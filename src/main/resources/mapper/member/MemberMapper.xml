@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.member.MemberMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.member.MemberDO">
+    <id column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="member_username" jdbcType="VARCHAR" property="memberUsername" />
+    <result column="member_password" jdbcType="VARCHAR" property="memberPassword" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="member_number" jdbcType="VARCHAR" property="memberNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    member_id, member_username, member_password, member_name, member_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.member.MemberDO">
+    insert into member (member_id, member_username, member_password, 
+      member_name, member_number)
+    values (#{memberId,jdbcType=BIGINT}, #{memberUsername,jdbcType=VARCHAR}, #{memberPassword,jdbcType=VARCHAR}, 
+      #{memberName,jdbcType=VARCHAR}, #{memberNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.member.MemberDO">
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="memberUsername != null">
+        member_username,
+      </if>
+      <if test="memberPassword != null">
+        member_password,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+      <if test="memberNumber != null">
+        member_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="memberUsername != null">
+        #{memberUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPassword != null">
+        #{memberPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNumber != null">
+        #{memberNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.member.MemberDO">
+    update member
+    <set>
+      <if test="memberUsername != null">
+        member_username = #{memberUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPassword != null">
+        member_password = #{memberPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null">
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNumber != null">
+        member_number = #{memberNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.member.MemberDO">
+    update member
+    set member_username = #{memberUsername,jdbcType=VARCHAR},
+      member_password = #{memberPassword,jdbcType=VARCHAR},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      member_number = #{memberNumber,jdbcType=VARCHAR}
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+  <select id="getMemberInfo" parameterType="com.biao.entity.member.MemberDO" resultMap="BaseResultMap">
+    select member_username,member_name,member_number
+    from member
+    <where>
+      <if test="memberId != null">
+        and member_id=#{memberId}
+      </if>
+    </where>
+  </select>
+</mapper>

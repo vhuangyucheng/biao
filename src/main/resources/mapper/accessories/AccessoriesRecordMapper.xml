@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.accessories.AccessoriesRecordMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.accessories.AccessoriesRecordDO">
+    <id column="accessories_record_id" jdbcType="BIGINT" property="accessoriesRecordId" />
+    <result column="accessories_id" jdbcType="BIGINT" property="accessoriesId" />
+    <result column="product_record_sn" jdbcType="VARCHAR" property="productRecordSn" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="accessories_transmission" jdbcType="INTEGER" property="accessoriesTransmission" />
+    <result column="accessories_record_convert" jdbcType="DOUBLE" property="accessoriesRecordConvert" />
+    <result column="accessories_record_member" jdbcType="VARCHAR" property="accessoriesRecordMember" />
+    <result column="accessories_record_message" jdbcType="VARCHAR" property="accessoriesRecordMessage" />
+    <result column="accessories_record_date" jdbcType="TIMESTAMP" property="accessoriesRecordDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    accessories_record_id, accessories_id, product_record_sn, product_id, accessories_transmission, 
+    accessories_record_convert, accessories_record_member, accessories_record_message, 
+    accessories_record_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accessories_record
+    where accessories_record_id = #{accessoriesRecordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accessories_record
+    where accessories_record_id = #{accessoriesRecordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.accessories.AccessoriesRecordDO">
+    insert into accessories_record (accessories_record_id, accessories_id, 
+      product_record_sn, product_id, accessories_transmission, 
+      accessories_record_convert, accessories_record_member, 
+      accessories_record_message, accessories_record_date
+      )
+    values (#{accessoriesRecordId,jdbcType=BIGINT}, #{accessoriesId,jdbcType=BIGINT}, 
+      #{productRecordSn,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, #{accessoriesTransmission,jdbcType=INTEGER}, 
+      #{accessoriesRecordConvert,jdbcType=DOUBLE}, #{accessoriesRecordMember,jdbcType=VARCHAR}, 
+      #{accessoriesRecordMessage,jdbcType=VARCHAR}, #{accessoriesRecordDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.accessories.AccessoriesRecordDO">
+    insert into accessories_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accessoriesRecordId != null">
+        accessories_record_id,
+      </if>
+      <if test="accessoriesId != null">
+        accessories_id,
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="accessoriesTransmission != null">
+        accessories_transmission,
+      </if>
+      <if test="accessoriesRecordConvert != null">
+        accessories_record_convert,
+      </if>
+      <if test="accessoriesRecordMember != null">
+        accessories_record_member,
+      </if>
+      <if test="accessoriesRecordMessage != null">
+        accessories_record_message,
+      </if>
+      <if test="accessoriesRecordDate != null">
+        accessories_record_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accessoriesRecordId != null">
+        #{accessoriesRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="accessoriesId != null">
+        #{accessoriesId,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="accessoriesTransmission != null">
+        #{accessoriesTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesRecordConvert != null">
+        #{accessoriesRecordConvert,jdbcType=DOUBLE},
+      </if>
+      <if test="accessoriesRecordMember != null">
+        #{accessoriesRecordMember,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesRecordMessage != null">
+        #{accessoriesRecordMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesRecordDate != null">
+        #{accessoriesRecordDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.accessories.AccessoriesRecordDO">
+    update accessories_record
+    <set>
+      <if test="accessoriesId != null">
+        accessories_id = #{accessoriesId,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="accessoriesTransmission != null">
+        accessories_transmission = #{accessoriesTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="accessoriesRecordConvert != null">
+        accessories_record_convert = #{accessoriesRecordConvert,jdbcType=DOUBLE},
+      </if>
+      <if test="accessoriesRecordMember != null">
+        accessories_record_member = #{accessoriesRecordMember,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesRecordMessage != null">
+        accessories_record_message = #{accessoriesRecordMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="accessoriesRecordDate != null">
+        accessories_record_date = #{accessoriesRecordDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where accessories_record_id = #{accessoriesRecordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.accessories.AccessoriesRecordDO">
+    update accessories_record
+    set accessories_id = #{accessoriesId,jdbcType=BIGINT},
+      product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      accessories_transmission = #{accessoriesTransmission,jdbcType=INTEGER},
+      accessories_record_convert = #{accessoriesRecordConvert,jdbcType=DOUBLE},
+      accessories_record_member = #{accessoriesRecordMember,jdbcType=VARCHAR},
+      accessories_record_message = #{accessoriesRecordMessage,jdbcType=VARCHAR},
+      accessories_record_date = #{accessoriesRecordDate,jdbcType=TIMESTAMP}
+    where accessories_record_id = #{accessoriesRecordId,jdbcType=BIGINT}
+  </update>
+</mapper>

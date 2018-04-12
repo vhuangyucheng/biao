@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.product.ProductRecordMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.product.ProductRecordDO">
+    <id column="product_record_id" jdbcType="BIGINT" property="productRecordId" />
+    <result column="product_sn" jdbcType="BIGINT" property="productSn" />
+    <result column="product_record_sn" jdbcType="VARCHAR" property="productRecordSn" />
+    <result column="product_record_po" jdbcType="VARCHAR" property="productRecordPo" />
+    <result column="product_member_id" jdbcType="VARCHAR" property="productMemberId" />
+    <result column="product_member_message" jdbcType="VARCHAR" property="productMemberMessage" />
+    <result column="product_transmission" jdbcType="INTEGER" property="productTransmission" />
+    <result column="product_record_date" jdbcType="TIMESTAMP" property="productRecordDate" />
+    <result column="product_record_people" jdbcType="VARCHAR" property="productRecordPeople" />
+    <result column="product_record_message" jdbcType="VARCHAR" property="productRecordMessage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_record_id, product_sn, product_record_sn, product_record_po, product_member_id, 
+    product_member_message, product_transmission, product_record_date, product_record_people, 
+    product_record_message
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_record
+    where product_record_id = #{productRecordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from product_record
+    where product_record_id = #{productRecordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.product.ProductRecordDO">
+    insert into product_record (product_record_id, product_sn, product_record_sn, 
+      product_record_po, product_member_id, product_member_message, 
+      product_transmission, product_record_date, 
+      product_record_people, product_record_message
+      )
+    values (#{productRecordId,jdbcType=BIGINT}, #{productSn,jdbcType=BIGINT}, #{productRecordSn,jdbcType=VARCHAR}, 
+      #{productRecordPo,jdbcType=VARCHAR}, #{productMemberId,jdbcType=VARCHAR}, #{productMemberMessage,jdbcType=VARCHAR}, 
+      #{productTransmission,jdbcType=INTEGER}, #{productRecordDate,jdbcType=TIMESTAMP}, 
+      #{productRecordPeople,jdbcType=VARCHAR}, #{productRecordMessage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.product.ProductRecordDO">
+    insert into product_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productRecordId != null">
+        product_record_id,
+      </if>
+      <if test="productSn != null">
+        product_sn,
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn,
+      </if>
+      <if test="productRecordPo != null">
+        product_record_po,
+      </if>
+      <if test="productMemberId != null">
+        product_member_id,
+      </if>
+      <if test="productMemberMessage != null">
+        product_member_message,
+      </if>
+      <if test="productTransmission != null">
+        product_transmission,
+      </if>
+      <if test="productRecordDate != null">
+        product_record_date,
+      </if>
+      <if test="productRecordPeople != null">
+        product_record_people,
+      </if>
+      <if test="productRecordMessage != null">
+        product_record_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productRecordId != null">
+        #{productRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="productSn != null">
+        #{productSn,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productRecordPo != null">
+        #{productRecordPo,jdbcType=VARCHAR},
+      </if>
+      <if test="productMemberId != null">
+        #{productMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="productMemberMessage != null">
+        #{productMemberMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="productTransmission != null">
+        #{productTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="productRecordDate != null">
+        #{productRecordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productRecordPeople != null">
+        #{productRecordPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="productRecordMessage != null">
+        #{productRecordMessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.product.ProductRecordDO">
+    update product_record
+    <set>
+      <if test="productSn != null">
+        product_sn = #{productSn,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productRecordPo != null">
+        product_record_po = #{productRecordPo,jdbcType=VARCHAR},
+      </if>
+      <if test="productMemberId != null">
+        product_member_id = #{productMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="productMemberMessage != null">
+        product_member_message = #{productMemberMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="productTransmission != null">
+        product_transmission = #{productTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="productRecordDate != null">
+        product_record_date = #{productRecordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productRecordPeople != null">
+        product_record_people = #{productRecordPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="productRecordMessage != null">
+        product_record_message = #{productRecordMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_record_id = #{productRecordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.product.ProductRecordDO">
+    update product_record
+    set product_sn = #{productSn,jdbcType=BIGINT},
+      product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      product_record_po = #{productRecordPo,jdbcType=VARCHAR},
+      product_member_id = #{productMemberId,jdbcType=VARCHAR},
+      product_member_message = #{productMemberMessage,jdbcType=VARCHAR},
+      product_transmission = #{productTransmission,jdbcType=INTEGER},
+      product_record_date = #{productRecordDate,jdbcType=TIMESTAMP},
+      product_record_people = #{productRecordPeople,jdbcType=VARCHAR},
+      product_record_message = #{productRecordMessage,jdbcType=VARCHAR}
+    where product_record_id = #{productRecordId,jdbcType=BIGINT}
+  </update>
+</mapper>

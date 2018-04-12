@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biao.dao.material.MaterialRecordMapper">
+  <resultMap id="BaseResultMap" type="com.biao.entity.material.MaterialRecordDO">
+    <id column="material_record_id" jdbcType="BIGINT" property="materialRecordId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_record_sn" jdbcType="VARCHAR" property="productRecordSn" />
+    <result column="material_id" jdbcType="BIGINT" property="materialId" />
+    <result column="material_record_transmission" jdbcType="INTEGER" property="materialRecordTransmission" />
+    <result column="material_record_convert" jdbcType="DOUBLE" property="materialRecordConvert" />
+    <result column="material_record_member" jdbcType="VARCHAR" property="materialRecordMember" />
+    <result column="material_record_message" jdbcType="VARCHAR" property="materialRecordMessage" />
+    <result column="material_record_date" jdbcType="TIMESTAMP" property="materialRecordDate" />
+    <result column="material_record_department" jdbcType="VARCHAR" property="materialRecordDepartment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    material_record_id, product_id, product_record_sn, material_id, material_record_transmission, 
+    material_record_convert, material_record_member, material_record_message, material_record_date, 
+    material_record_department
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from material_record
+    where material_record_id = #{materialRecordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from material_record
+    where material_record_id = #{materialRecordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biao.entity.material.MaterialRecordDO">
+    insert into material_record (material_record_id, product_id, product_record_sn, 
+      material_id, material_record_transmission, 
+      material_record_convert, material_record_member, 
+      material_record_message, material_record_date, 
+      material_record_department)
+    values (#{materialRecordId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{productRecordSn,jdbcType=VARCHAR}, 
+      #{materialId,jdbcType=BIGINT}, #{materialRecordTransmission,jdbcType=INTEGER}, 
+      #{materialRecordConvert,jdbcType=DOUBLE}, #{materialRecordMember,jdbcType=VARCHAR}, 
+      #{materialRecordMessage,jdbcType=VARCHAR}, #{materialRecordDate,jdbcType=TIMESTAMP}, 
+      #{materialRecordDepartment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biao.entity.material.MaterialRecordDO">
+    insert into material_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="materialRecordId != null">
+        material_record_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="materialRecordTransmission != null">
+        material_record_transmission,
+      </if>
+      <if test="materialRecordConvert != null">
+        material_record_convert,
+      </if>
+      <if test="materialRecordMember != null">
+        material_record_member,
+      </if>
+      <if test="materialRecordMessage != null">
+        material_record_message,
+      </if>
+      <if test="materialRecordDate != null">
+        material_record_date,
+      </if>
+      <if test="materialRecordDepartment != null">
+        material_record_department,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="materialRecordId != null">
+        #{materialRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=BIGINT},
+      </if>
+      <if test="materialRecordTransmission != null">
+        #{materialRecordTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="materialRecordConvert != null">
+        #{materialRecordConvert,jdbcType=DOUBLE},
+      </if>
+      <if test="materialRecordMember != null">
+        #{materialRecordMember,jdbcType=VARCHAR},
+      </if>
+      <if test="materialRecordMessage != null">
+        #{materialRecordMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="materialRecordDate != null">
+        #{materialRecordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="materialRecordDepartment != null">
+        #{materialRecordDepartment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biao.entity.material.MaterialRecordDO">
+    update material_record
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productRecordSn != null">
+        product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=BIGINT},
+      </if>
+      <if test="materialRecordTransmission != null">
+        material_record_transmission = #{materialRecordTransmission,jdbcType=INTEGER},
+      </if>
+      <if test="materialRecordConvert != null">
+        material_record_convert = #{materialRecordConvert,jdbcType=DOUBLE},
+      </if>
+      <if test="materialRecordMember != null">
+        material_record_member = #{materialRecordMember,jdbcType=VARCHAR},
+      </if>
+      <if test="materialRecordMessage != null">
+        material_record_message = #{materialRecordMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="materialRecordDate != null">
+        material_record_date = #{materialRecordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="materialRecordDepartment != null">
+        material_record_department = #{materialRecordDepartment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where material_record_id = #{materialRecordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biao.entity.material.MaterialRecordDO">
+    update material_record
+    set product_id = #{productId,jdbcType=BIGINT},
+      product_record_sn = #{productRecordSn,jdbcType=VARCHAR},
+      material_id = #{materialId,jdbcType=BIGINT},
+      material_record_transmission = #{materialRecordTransmission,jdbcType=INTEGER},
+      material_record_convert = #{materialRecordConvert,jdbcType=DOUBLE},
+      material_record_member = #{materialRecordMember,jdbcType=VARCHAR},
+      material_record_message = #{materialRecordMessage,jdbcType=VARCHAR},
+      material_record_date = #{materialRecordDate,jdbcType=TIMESTAMP},
+      material_record_department = #{materialRecordDepartment,jdbcType=VARCHAR}
+    where material_record_id = #{materialRecordId,jdbcType=BIGINT}
+  </update>
+</mapper>

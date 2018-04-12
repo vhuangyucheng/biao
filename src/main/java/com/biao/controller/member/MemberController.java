@@ -5,10 +5,7 @@ import com.biao.param.request.DataRequest;
 import com.biao.param.response.SuccessResponse;
 import com.biao.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : kooing
@@ -23,9 +20,14 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    @PostMapping("/checkUsername")//TODO
-    public SuccessResponse<Object> checkUsername(DataRequest<MemberDO> MemberDO) {
+    @PostMapping("/checkUsername")
+    public SuccessResponse<Object> checkUsername(@RequestBody DataRequest<MemberDO> MemberDO) {
         return memberService.checkMember(MemberDO);
+    }
+
+    @PostMapping("/getMember")
+    public SuccessResponse<MemberDO> getUsername(@RequestBody DataRequest<MemberDO> MemberDO) {
+        return memberService.getMember(MemberDO);
     }
 
 }
