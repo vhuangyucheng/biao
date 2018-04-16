@@ -1,10 +1,16 @@
 package com.biao.entity.member;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class MemberDO {
+
     private Long memberId;
 
+    @NotEmpty(message="姓名不能为空")
     private String memberUsername;
-
+    @NotEmpty(message="姓名不能为空")
     private String memberPassword;
 
     private String memberName;

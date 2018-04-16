@@ -1,4 +1,4 @@
-package com.biao.common;
+package com.biao.common.pagination;
 
 import com.github.pagehelper.PageInfo;
 import lombok.Data;

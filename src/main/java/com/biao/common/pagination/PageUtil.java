@@ -1,4 +1,4 @@
-package com.biao.common;
+package com.biao.common.pagination;
 
 import com.biao.param.request.DataRequest;
 import com.biao.param.request.HeaderRequest;

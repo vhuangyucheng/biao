@@ -1,4 +1,9 @@
 spring:
+  #404
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
   datasource:
     #连接MySQL
     url: jdbc:mysql://localhost:3306/biao?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=true
@@ -19,6 +24,10 @@ logging:
   level:
    com:
     biao:
+      controller: DEBUG
       dao: DEBUG
+
+
+
 
 

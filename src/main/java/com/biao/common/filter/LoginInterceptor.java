@@ -1,4 +1,4 @@
-package com.biao.common;
+package com.biao.common.filter;
 
         import org.springframework.stereotype.Component;
         import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +24,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
         System.out.println("-------------------preHandle");
-
+        String token = request.getHeader("token");
+        System.out.println(token);
         return true;
     }
 

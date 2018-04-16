@@ -1,6 +1,6 @@
 package com.biao.param.response;
 
-import com.biao.common.Pagination;
+import com.biao.common.pagination.Pagination;
 import lombok.Data;
 
 /**
@@ -12,13 +12,13 @@ import lombok.Data;
 @Data
 public class SuccessResponse<T>  {
     /** 是否成功*/
-    protected String code;
+    private String code;
     /** 消息*/
-    protected String message;
+    private String message;
     /** 分页*/
-    protected Pagination pagination;
+    private Pagination pagination;
 
-    protected T data;
+    private T data;
 
 
     /**

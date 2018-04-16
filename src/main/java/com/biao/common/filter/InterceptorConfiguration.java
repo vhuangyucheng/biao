@@ -1,4 +1,4 @@
-package com.biao.common;
+package com.biao.common.filter;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -20,7 +20,7 @@ public class InterceptorConfiguration extends WebMvcConfigurerAdapter {
         // 配置拦截的路径
         ir.addPathPatterns("/**");
         // 配置不拦截的路径
-        ir.excludePathPatterns("/member/checkUsername");
+        ir.excludePathPatterns("/**");
 
         // 还可以在这里注册其它的拦截器
         //registry.addInterceptor(new OtherInterceptor()).addPathPatterns("/**");
