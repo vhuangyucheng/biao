@@ -5,6 +5,7 @@ import com.biao.entity.member.MemberDO;
 import com.biao.param.request.DataRequest;
 import com.biao.param.response.SuccessResponse;
 import com.biao.service.member.MemberService;
+import com.biao.service.member.exception.MemberCheckException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,10 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public SuccessResponse<Object> checkMember(DataRequest<MemberDO> dataRequest) {
+
         MemberDO memberDO = memberMapper.getMember(dataRequest.getBody());
         if(memberDO == null){
-            return new SuccessResponse<Object>("1", "账号密码错误", null);
+            throw new MemberCheckException();
         }
         return new SuccessResponse<Object>("0", "成功", null);
     }

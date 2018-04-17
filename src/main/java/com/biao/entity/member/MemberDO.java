@@ -10,7 +10,7 @@ public class MemberDO {
 
     @NotEmpty(message="姓名不能为空")
     private String memberUsername;
-    @NotEmpty(message="姓名不能为空")
+    @NotEmpty(message="密码不能为空")
     private String memberPassword;
 
     private String memberName;

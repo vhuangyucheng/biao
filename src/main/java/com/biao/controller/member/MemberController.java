@@ -4,7 +4,9 @@ import com.biao.entity.member.MemberDO;
 import com.biao.param.request.DataRequest;
 import com.biao.param.response.SuccessResponse;
 import com.biao.service.member.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,7 @@ import javax.validation.Valid;
  * @desription :
  * @update by :
  */
-@Validated
+@Slf4j
 @RestController
 @RequestMapping("member")
 public class MemberController {

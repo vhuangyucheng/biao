@@ -6,6 +6,9 @@ import com.biao.param.request.DataRequest;
 import com.biao.param.response.SuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 /**
  * @author : kooing
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @desription :
  * @update by :
  */
-
+@Validated
 public interface MemberService {
 
     /**
@@ -22,7 +25,7 @@ public interface MemberService {
      * @Desription  : 检查账号密码
      * @return      :
      */
-    public SuccessResponse<Object> checkMember(DataRequest<MemberDO> dataRequest);
+    public SuccessResponse<Object> checkMember(@Valid DataRequest<MemberDO> dataRequest);
 
     /**
      * @author      : kooing

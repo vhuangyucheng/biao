@@ -100,7 +100,6 @@ public class PreconditionsTest {
 
     public static void checkState(List<Integer> intList,int index)throws Exception{
         //表达式为true不抛异常
-        Optional
         Preconditions.checkState(intList.size()<index, " intList size 不能大于"+index);
     }
 

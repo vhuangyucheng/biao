@@ -1,6 +1,9 @@
 package com.biao.param.request;
 
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 /**
  * @author : kooing
@@ -14,5 +17,6 @@ public class DataRequest<T> {
     private HeaderRequest header;
 
     /** 应用参数*/
+    @Valid
     private T body;
 }
