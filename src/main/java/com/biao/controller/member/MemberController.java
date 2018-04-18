@@ -1,6 +1,7 @@
 package com.biao.controller.member;
 
 import com.biao.entity.member.MemberDO;
+import com.biao.exception.MemberExceptionHandler;
 import com.biao.param.request.DataRequest;
 import com.biao.param.response.ExceptionResponse;
 import com.biao.param.response.SuccessResponse;
@@ -26,7 +27,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequestMapping("member")
-public class MemberController {
+public class MemberController extends MemberExceptionHandler {
 
     @Autowired
     MemberService memberService;

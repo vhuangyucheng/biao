@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BaseServiceException.class)
-    public Object controllerExceptionHandler(HttpServletRequest req, BaseServiceException e) {
+    public Object BaseServiceException(HttpServletRequest req, BaseServiceException e) {
         log.error("---service Exception Handler---Host {} invokes url {} CODE:{}  MESSAGE: {}", req.getRemoteHost()
                 , req.getRequestURL()
                 , e.getCode()
