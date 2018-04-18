@@ -1,6 +1,5 @@
-package com.biao.controller.exception;
+package com.biao.exception;
 
-import com.biao.exception.BaseException;
 import com.biao.param.response.ExceptionResponse;
 import com.biao.service.member.exception.MemberCheckException;
 import com.biao.service.member.exception.MemberException;
@@ -16,20 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
  * @desription :
  * @update by :
  */
+
 @RestController
-@ControllerAdvice
 @Slf4j
+@ControllerAdvice
 public class MemberExceptionHandler {
-//TODO
-    @ExceptionHandler(value = MemberCheckException.class)
-    public Object baseErrorHandler(HttpServletRequest req, MemberCheckException  e) throws Exception {
+
+    @ExceptionHandler(MemberException.class)
+    public Object controllerExceptionHandler(HttpServletRequest req, MemberCheckException e) {
         log.error("---MemberException Handler---Host {} invokes url {} CODE:{}  MESSAGE: {}", req.getRemoteHost()
-            , req.getRequestURL()
-            , e.getCode()
-            , e.getMessage());
+                , req.getRequestURL()
+                , e.getCode()
+                , e.getMessage());
         ExceptionResponse exceptionResponse = new ExceptionResponse();
         exceptionResponse.setCode(e.getCode());
-        exceptionResponse.setCode(e.getMessage());
+        exceptionResponse.setMessage(e.getMessage());
         return exceptionResponse;
     }
 }

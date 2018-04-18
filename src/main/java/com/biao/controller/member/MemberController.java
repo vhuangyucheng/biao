@@ -2,9 +2,13 @@ package com.biao.controller.member;
 
 import com.biao.entity.member.MemberDO;
 import com.biao.param.request.DataRequest;
+import com.biao.param.response.ExceptionResponse;
 import com.biao.param.response.SuccessResponse;
 import com.biao.service.member.MemberService;
+import com.biao.service.member.exception.MemberCheckException;
+import com.biao.service.member.exception.MemberException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;

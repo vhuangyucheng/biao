@@ -1,6 +1,8 @@
 package com.biao.param.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author : kooing
@@ -9,6 +11,8 @@ import lombok.Data;
  * @update by :
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExceptionResponse {
     /** 是否成功*/
     private String code;
