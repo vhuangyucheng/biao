@@ -139,4 +139,5 @@
       meterial_price = #{meterialPrice,jdbcType=DOUBLE}
     where material_id = #{materialId,jdbcType=BIGINT}
   </update>
+
 </mapper>

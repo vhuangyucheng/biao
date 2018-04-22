@@ -188,4 +188,13 @@
       accessories_price = #{accessoriesPrice,jdbcType=DECIMAL}
     where accessories_id = #{accessoriesId,jdbcType=BIGINT}
   </update>
+  <select id="listAccessories" resultMap="BaseResultMap" parameterType="AccessoriesDO">
+    select*
+    from accessories
+  </select>
+  <select id="getAccessories" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM accessories
+    where accessories_id=#{accessories}
+  </select>
 </mapper>

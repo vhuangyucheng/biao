@@ -25,7 +25,7 @@ public interface MemberService {
      * @Desription  : 检查账号密码
      * @return      :
      */
-    public SuccessResponse<Object> checkMember(@Valid DataRequest<MemberDO> dataRequest);
+    public SuccessResponse<Object> checkMember(@Valid MemberDO memberDo);
 
     /**
      * @author      : kooing
@@ -33,5 +33,5 @@ public interface MemberService {
      * @Desription  : 获得用户信息
      * @return      :
      */
-    public SuccessResponse<MemberDO> getMember(DataRequest<MemberDO> dataRequest);
+    public SuccessResponse<MemberDO> getMember(@Valid MemberDO memberDo);
 }

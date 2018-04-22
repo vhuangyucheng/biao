@@ -21,9 +21,9 @@ public class MemberServiceImpl implements MemberService {
     private MemberMapper memberMapper ;
 
     @Override
-    public SuccessResponse<Object> checkMember(DataRequest<MemberDO> dataRequest) {
+    public SuccessResponse<Object> checkMember(MemberDO memberDO) {
 
-        MemberDO memberDO = memberMapper.getMember(dataRequest.getBody());
+        MemberDO member = memberMapper.getMember(memberDO);
         if(memberDO == null){
             throw new MemberCheckException();
         }
@@ -31,8 +31,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public SuccessResponse<MemberDO> getMember(DataRequest<MemberDO> dataRequest) {
-        MemberDO memberDO = memberMapper.getMemberInfo(dataRequest.getBody());
+    public SuccessResponse<MemberDO> getMember(MemberDO memberDO) {
+        MemberDO member = memberMapper.getMemberInfo(memberDO);
         return new SuccessResponse<MemberDO>(memberDO);
     }
 }

@@ -55,10 +55,10 @@ public class GlobalExceptionHandler {
     }
 
 
-    @ExceptionHandler(value = Exception.class)
-    public Object defaultErrorHandler(HttpServletRequest req, Exception e)  {
-        log.error("---DefaultException Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
-        return new ExceptionResponse(GlobalCode.CODE_UNKNOWN, GlobalCode.MSG_UNKNOWN);
-    }
+//    @ExceptionHandler(value = Exception.class)
+//    public Object defaultErrorHandler(HttpServletRequest req, Exception e)  {
+//        log.error("---DefaultException Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+//        return new ExceptionResponse(GlobalCode.CODE_UNKNOWN, GlobalCode.MSG_UNKNOWN);
+//    }
 
 }
