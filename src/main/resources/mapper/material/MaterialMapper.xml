@@ -139,5 +139,13 @@
       meterial_price = #{meterialPrice,jdbcType=DOUBLE}
     where material_id = #{materialId,jdbcType=BIGINT}
   </update>
-
+  <select id="listMaterial" parameterType="com.biao.entity.material.MaterialDO" resultMap="BaseResultMap">
+    select*
+    from material
+  </select>
+  <select id="getMaterial" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT *
+    FROM material
+    where material_id=#{accessories}
+  </select>
 </mapper>

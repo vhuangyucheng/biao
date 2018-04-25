@@ -27,7 +27,8 @@ logging:
       controller: DEBUG
       dao: DEBUG
 
-
+server:
+  port: 8081
 
 
 

@@ -153,4 +153,19 @@
       material_record_department = #{materialRecordDepartment,jdbcType=VARCHAR}
     where material_record_id = #{materialRecordId,jdbcType=BIGINT}
   </update>
+  <select id="listMaterialRecord" resultMap="BaseResultMap" parameterType="com.biao.param.request.material.ListMaterialRecordDTO">
+    SELECT material_record.*
+    from material_record,material
+    <where>
+      <if test="materialName != null">
+        AND material.material_name LIKE concat(concat('%',#{materialName}),'%')
+        and material.material_id = material_record.material_id
+      </if>
+    </where>
+  </select>
+  <select id="getMaterialRecord" resultMap="BaseResultMap" parameterType="com.biao.entity.material.MaterialRecordDO">
+    select*
+        from material_record
+        where material_record_id=#{materialRecordId}
+  </select>
 </mapper>

@@ -142,10 +142,16 @@
       accessories_record_date = #{accessoriesRecordDate,jdbcType=TIMESTAMP}
     where accessories_record_id = #{accessoriesRecordId,jdbcType=BIGINT}
   </update>
-    <select id="listAccessoriesRecord" parameterType="com.biao.entity.accessories.AccessoriesRecordDO"
+    <select id="listAccessoriesRecord" parameterType="com.biao.param.request.accession.ListAccessoriesRecordDTO"
             resultMap="BaseResultMap">
-      select*
-      from accessories_record
+      select accessories_record.*
+      from accessories_record,accessories
+        <where>
+            <if test="accessoriesSpecification != null">
+                AND accessories.accessories_specification LIKE concat(concat('%',#{accessoriesSpecification}),'%')
+                and accessories.accessories_id=accessories_record.accessories_id
+            </if>
+        </where>
     </select>
     <select id="getAccessoriesRecord" parameterType="com.biao.entity.accessories.AccessoriesRecordDO"
             resultMap="BaseResultMap">

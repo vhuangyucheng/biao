@@ -2,13 +2,12 @@ package com.biao.controller.accession;
 
 import com.biao.common.pagination.PageUtil;
 import com.biao.common.pagination.Pagination;
-import com.biao.dao.accessories.AccessoriesRecordMapper;
-import com.biao.entity.accessories.AccessoriesDO;
 import com.biao.entity.accessories.AccessoriesRecordDO;
 import com.biao.param.request.DataRequest;
+import com.biao.param.request.accession.ListAccessoriesRecordDTO;
+import com.biao.param.request.material.ListMaterialRecordDTO;
 import com.biao.param.response.SuccessResponse;
-import com.biao.service.accession.AccessoriesRecordService;
-import com.biao.service.accession.AccessoriesService;
+import com.biao.service.accession.service.AccessoriesRecordService;
 import com.biao.service.accession.exceptionHandler.AccessoriesExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class AccessoriesRecordController extends AccessoriesExceptionHandler{
     }
 
     @PostMapping("/listAccessoriesRecord")
-    public SuccessResponse<List<AccessoriesRecordDO>> listAccessoriesRecord(@RequestBody @Valid DataRequest<AccessoriesRecordDO> dataRequest) {
+    public SuccessResponse<List<AccessoriesRecordDO>> listAccessoriesRecord(@RequestBody @Valid DataRequest<ListAccessoriesRecordDTO> dataRequest) {
         PageUtil.startPage(dataRequest);
         List<AccessoriesRecordDO> accessoriesDOList = accessoriesRecordService.listAccessories(dataRequest.getBody());
         Pagination pagination = new Pagination(accessoriesDOList);

@@ -1,7 +1,8 @@
-package com.biao.service.accession;
+package com.biao.service.accession.service;
 
 import com.biao.entity.accessories.AccessoriesRecordDO;
 import com.biao.param.request.DataRequest;
+import com.biao.param.request.accession.ListAccessoriesRecordDTO;
 
 import java.util.List;
 
@@ -43,5 +44,5 @@ public interface AccessoriesRecordService {
      * @Desription  : 辅料纪录列表
      * @return      :
      */
-    public List<AccessoriesRecordDO> listAccessories(AccessoriesRecordDO accessoriesRecordDO);
+    public List<AccessoriesRecordDO> listAccessories(ListAccessoriesRecordDTO listAccessoriesRecordDTO);
 }

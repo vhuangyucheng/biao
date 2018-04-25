@@ -2,8 +2,7 @@ package com.biao.service.accession.impl;
 
 import com.biao.dao.accessories.AccessoriesMapper;
 import com.biao.entity.accessories.AccessoriesDO;
-import com.biao.param.response.SuccessResponse;
-import com.biao.service.accession.AccessoriesService;
+import com.biao.service.accession.service.AccessoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

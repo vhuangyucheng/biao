@@ -1,8 +1,8 @@
 package com.biao.dao.accessories;
 
 import com.biao.entity.accessories.AccessoriesRecordDO;
+import com.biao.param.request.accession.ListAccessoriesRecordDTO;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public interface AccessoriesRecordMapper {
      * @Desription  : 纪录列表
      * @return      :
      */
-    List<AccessoriesRecordDO> listAccessoriesRecord(AccessoriesRecordDO accessoriesRecordDO);
+    List<AccessoriesRecordDO> listAccessoriesRecord(ListAccessoriesRecordDTO listAccessoriesRecordDTO);
 
 
     /**

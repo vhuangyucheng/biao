@@ -1,4 +1,4 @@
-package com.biao.service.accession;
+package com.biao.service.accession.service;
 
 import com.biao.entity.accessories.AccessoriesDO;
 import com.biao.param.response.SuccessResponse;

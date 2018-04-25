@@ -4,8 +4,8 @@ import com.biao.dao.accessories.AccessoriesMapper;
 import com.biao.dao.accessories.AccessoriesRecordMapper;
 import com.biao.entity.accessories.AccessoriesDO;
 import com.biao.entity.accessories.AccessoriesRecordDO;
-import com.biao.param.request.DataRequest;
-import com.biao.service.accession.AccessoriesRecordService;
+import com.biao.param.request.accession.ListAccessoriesRecordDTO;
+import com.biao.service.accession.service.AccessoriesRecordService;
 import com.biao.service.accession.code.ResultCode;
 import com.biao.service.accession.exception.AccessoriesException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,15 +77,15 @@ public class AccessoriesRecordServiceImpl implements AccessoriesRecordService {
     }
 
     @Override
-    public List<AccessoriesRecordDO> listAccessories(AccessoriesRecordDO accessoriesRecordDO) {
-        return accessoriesRecordMapper.listAccessoriesRecord(accessoriesRecordDO);
+    public List<AccessoriesRecordDO> listAccessories(ListAccessoriesRecordDTO listAccessoriesRecordDTO) {
+        return accessoriesRecordMapper.listAccessoriesRecord(listAccessoriesRecordDTO);
     }
 
     /**
      * @return :
      * @author : kooing
      * @Date : 2018/4/22 20:07
-     * @Desription : 增加库存
+     * @Desription : 增加纪录
      */
     private void insertStorage(AccessoriesRecordDO accessoriesRecordDO) {
         //查出现在有多少
@@ -108,7 +108,7 @@ public class AccessoriesRecordServiceImpl implements AccessoriesRecordService {
      * @return :
      * @author : kooing
      * @Date : 2018/4/22 20:07
-     * @Desription : 减少库存
+     * @Desription : 减少纪录
      */
     private void deleteStorage(AccessoriesRecordDO accessoriesRecordDO) {
         //查出现在有多少
